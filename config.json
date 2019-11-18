@@ -16,9 +16,7 @@
     "dist": "docs/assets/css/"
   },
   "js": {
-    "src": [
-      "_src/assets/js/main.js"
-    ],
+    "src": ["_src/assets/js/main.js"],
     "dest": "public/assets/js/",
     "dist": "docs/assets/js/"
   },
@@ -28,7 +26,7 @@
     "dist": "docs/assets/images/"
   },
   "data": {
-    "src": "_src/service/*.json",
+    "src": "_src/assets/service/*.json",
     "dist": "public/service/"
   },
   "watch": {
