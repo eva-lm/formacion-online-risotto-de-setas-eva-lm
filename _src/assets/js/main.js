@@ -1,6 +1,6 @@
 "use strict";
 
-const url = "./service/data.json";
+const url = "./assets/services/data.json";
 let rissoto = [];
 
 const getData = () => {
