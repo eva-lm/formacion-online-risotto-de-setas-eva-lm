@@ -16,7 +16,9 @@
     "dist": "docs/assets/css/"
   },
   "js": {
-    "src": ["_src/assets/js/main.js", "_src/assets/services/data.json"],
+    "src": [
+      "_src/assets/js/main.js"
+    ],
     "dest": "public/assets/js/",
     "dist": "docs/assets/js/"
   },
@@ -24,6 +26,10 @@
     "src": "_src/assets/images/**/*.{gif,jpg,jpeg,JPG,JPEG,png,svg}",
     "dest": "public/assets/images/",
     "dist": "docs/assets/images/"
+  },
+  "data": {
+    "src": "_src/service/*.json",
+    "dist": "public/service/"
   },
   "watch": {
     "html": "_src/**/*.html"

@@ -1,6 +1,6 @@
 "use strict";
 
-const url = "./assets/services/data.json";
+const url = "./service/data.json";
 let rissoto = [];
 let total = 0;
 
@@ -43,7 +43,7 @@ const paintIngredients = () => {
     <p class="js__item-brand js-item">Marca: ${item.brand}</p>
     <p class="js__item-quantity js-item">Cantidad: ${item.quantity}</p>
     <p>Precio: ${item.price}</p>
-    <input class="js__item-number" type="number" value="${item.items}" />
+    <input class="js__item-number" type="number" onclick=addIngredient(this) value="${item.items}" />
     </li>`;
   });
   list.innerHTML = text;
@@ -74,6 +74,11 @@ const addItem = item => {
   subTotalPrice.innerHTML = "Subtotal: " + total.toFixed(2) + "€";
   const sum = total + 7;
   totalPrice.innerHTML = "Total: " + sum.toFixed(2);
+};
+
+const addIngredient = item => {
+  let valueItem = parseInt(item.value);
+  console.log(valueItem);
 };
 
 selectButton.addEventListener("click", selectIngredients);
