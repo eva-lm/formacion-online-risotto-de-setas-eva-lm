@@ -2,6 +2,7 @@
 
 const url = "./assets/services/data.json";
 let rissoto = [];
+let total = 0;
 
 const selectButton = document.querySelector(".header__button-select");
 const unSelectButton = document.querySelector(".header__button-unselect");
@@ -28,27 +29,9 @@ const formatData = data => {
     });
   });
 
-  // for (const item of data.recipe.ingredients) {
-  //   const ingredients = item.product;
-  //   console.log(ingredients);
-  // }
   console.log("risotittooo", rissoto);
   paintIngredients();
 };
-
-// const paintIngredients = () => {
-//   const list = document.querySelector(".article__list");
-//   let text = "";
-//   for (let i = 0; i < rissoto.length; i++) {
-//     text += `<li class="js-item">
-//   <p class="article__name">${rissoto[i].ingredients}</p>
-//   <p class="article__brand">${rissoto[i].brand}</p>
-//   <p class="article__kg">${rissoto[i].quantity}</p>
-//   </li>`;
-//   }
-//   list.innerHTML = text;
-//   console.log(list);
-// };
 
 const paintIngredients = () => {
   const list = document.querySelector(".article__list");
@@ -56,7 +39,7 @@ const paintIngredients = () => {
   const text = rissoto.map(item => {
     return `<li class="js__item">
     <p class="js__item-ingredients js-item">${item.ingredients}</p>
-    <input class="js-checkbox" type="checkbox"  />
+    <input class="js-checkbox" type="checkbox" onclick=addItem(this) value=${item.price}/>
     <p class="js__item-brand js-item">Marca: ${item.brand}</p>
     <p class="js__item-quantity js-item">Cantidad: ${item.quantity}</p>
     <p>Precio: ${item.price}</p>
@@ -64,7 +47,6 @@ const paintIngredients = () => {
     </li>`;
   });
   list.innerHTML = text;
-  addPrice();
 };
 
 const selectIngredients = () => {
@@ -79,14 +61,19 @@ const unSelectIngredients = () => {
     if (input[i].type == "checkbox") input[i].checked = 0;
 };
 
-const addPrice = () => {
+const addItem = item => {
+  const subTotalPrice = document.querySelector(".items__subtotal");
   const totalPrice = document.querySelector(".items__total");
 
-  const money = rissoto.map(item => {
-    return item.price;
-  });
-  totalPrice.innerHTML = "Total: " + money;
-  console.log("dineritooo", money);
+  let valueInput = parseFloat(item.value);
+  if (item.checked) {
+    total += valueInput;
+  } else {
+    total -= valueInput;
+  }
+  subTotalPrice.innerHTML = "Subtotal: " + total.toFixed(2) + "€";
+  const sum = total + 7;
+  totalPrice.innerHTML = "Total: " + sum.toFixed(2);
 };
 
 selectButton.addEventListener("click", selectIngredients);
