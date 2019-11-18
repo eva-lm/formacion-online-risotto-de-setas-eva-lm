@@ -16,7 +16,7 @@ const uglify = require("gulp-uglify-es").default;
 
 // > Dev tasks
 // >> Delete Public folder
-//gulp.task('clean', del.bind(null, ['public']));
+gulp.task("clean", del.bind(null, ["public"]));
 
 // >> Process HTML files
 gulp.task("html", function(done) {

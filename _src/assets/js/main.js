@@ -64,6 +64,7 @@ const paintIngredients = () => {
     </li>`;
   });
   list.innerHTML = text;
+  addPrice();
 };
 
 const selectIngredients = () => {
@@ -79,26 +80,15 @@ const unSelectIngredients = () => {
 };
 
 const addPrice = () => {
-  const elpreciojusto = document.querySelector(".items__total");
+  const totalPrice = document.querySelector(".items__total");
 
-  // for (let i = 0; i < rissoto.length; i++) {
-  //   acc += rissoto.price[i];
-  // }
-
-  for (const item of rissoto) {
-    const precio = item.price;
-    console.log(precio);
-    elpreciojusto.innerHTML = "Total: " + precio;
-  }
-  // const yokese = rissoto.map(item => {
-  //   return parseInt(item.price);
-  // });
-
-  // elpreciojusto.innerHTML = "Total: " + yokese + acc;
-  // console.log("precio", yokese);
+  const money = rissoto.map(item => {
+    return item.price;
+  });
+  totalPrice.innerHTML = "Total: " + money;
+  console.log("dineritooo", money);
 };
 
 selectButton.addEventListener("click", selectIngredients);
 unSelectButton.addEventListener("click", unSelectIngredients);
 getData();
-addPrice();
