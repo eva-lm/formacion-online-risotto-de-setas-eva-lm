@@ -54,12 +54,20 @@ const paintIngredients = () => {
   const text = rissoto.map(item => {
     return `<li class="js__item">
     <p class="js__item-ingredients js-item">${item.ingredients}</p>
-    <p class="js__item-brand js-item">${item.brand}</p>
-    <p class="js__item-quantity js-item">${item.quantity}</p>
+    <input type="checkbox" checked />
+    <p class="js__item-brand js-item">Marca: ${item.brand}</p>
+    <p class="js__item-quantity js-item">Cantidad: ${item.quantity}</p>
+    <p>Precio: ${item.price}</p>
+    <input class="js__item-number" type="number" value="${item.items}" />
     </li>`;
   });
 
   list.innerHTML = text;
+};
+
+const selectIngredients = () => {
+  const selectButton = document.querySelector(".header__button-select");
+  const unSelectButton = document.querySelector(".header__button-unselect");
 };
 
 getData();
