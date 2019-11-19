@@ -3,6 +3,7 @@
 const url = "./service/data.json";
 let rissoto = [];
 let total = 0;
+let productos = [];
 
 const selectButton = document.querySelector(".header__button-select");
 const unSelectButton = document.querySelector(".header__button-unselect");
@@ -68,17 +69,21 @@ const addItem = item => {
   let valueInput = parseFloat(item.value);
   if (item.checked) {
     total += valueInput;
+    const sum = total + 7;
+    totalPrice.innerHTML = "Total: " + sum.toFixed(2);
   } else {
     total -= valueInput;
+    totalPrice.innerHTML = "Total: 0.00€ ";
   }
   subTotalPrice.innerHTML = "Subtotal: " + total.toFixed(2) + "€";
-  const sum = total + 7;
-  totalPrice.innerHTML = "Total: " + sum.toFixed(2);
 };
 
-const addIngredient = item => {
-  let valueItem = parseInt(item.value);
-  console.log(valueItem);
+const addIngredient = () => {
+  const inputNumber = document.querySelector(".js__item-number");
+
+  productos.push(parseInt(inputNumber.value));
+
+  console.log("soy el array de productos", productos);
 };
 
 selectButton.addEventListener("click", selectIngredients);
