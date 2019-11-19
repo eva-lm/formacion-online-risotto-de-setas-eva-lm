@@ -40,11 +40,11 @@ const paintIngredients = () => {
   const text = rissoto.map(item => {
     return `<li class="js__item">
     <p class="js__item-ingredients js-item">${item.ingredients}</p>
-    <input class="js-checkbox" type="checkbox" onclick=addItem(this) value=${item.price}/>
+    <input class="js-checkbox" type="checkbox" onclick=addPrice(this) value=${item.price}/>
     <p class="js__item-brand js-item">Marca: ${item.brand}</p>
     <p class="js__item-quantity js-item">Cantidad: ${item.quantity}</p>
     <p>Precio: ${item.price}</p>
-    <input class="js__item-number" type="number" onclick=addIngredient(this) value="${item.items}" />
+    <input class="js__item-number" type="number" onclick=addItems(this) value="${item.items}" />
     </li>`;
   });
   list.innerHTML = text;
@@ -62,7 +62,7 @@ const unSelectIngredients = () => {
     if (input[i].type == "checkbox") input[i].checked = 0;
 };
 
-const addItem = item => {
+const addPrice = item => {
   const subTotalPrice = document.querySelector(".items__subtotal");
   const totalPrice = document.querySelector(".items__total");
 
@@ -78,11 +78,10 @@ const addItem = item => {
   subTotalPrice.innerHTML = "Subtotal: " + total.toFixed(2) + "€";
 };
 
-const addIngredient = () => {
-  const inputNumber = document.querySelector(".js__item-number");
-
-  productos.push(parseInt(inputNumber.value));
-
+const addItems = () => {
+  const totalItems = document.querySelector(".items__number");
+  productos.push(1);
+  totalItems.innerHTML = "Items: " + productos.length;
   console.log("soy el array de productos", productos);
 };
 
